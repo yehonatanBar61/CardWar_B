@@ -206,17 +206,20 @@ namespace ariel{
     }
 
     void Game::printStats(){
+        double winRateP1 = static_cast<double>(this->player1->getWin_counter()) / ((double)this->player2->getWin_counter() + this->player1->getWin_counter()) * 100;
+        double winRateP2 = static_cast<double>(this->player2->getWin_counter()) / ((double)this->player2->getWin_counter() + this->player1->getWin_counter()) * 100;
+        double drawRateP1 = static_cast<double>(this->draws_count) / (double) (this->player1->getTurncounter()) * 100;
+        double drawRateP2 = static_cast<double>(this->draws_count) / (double) (this->player2->getTurncounter()) * 100;
         cout << this->player1->getName() << ": \n";
-        cout << "Win rate = " << static_cast<double>((this->player1->getWin_counter() / (this->player1->getWin_counter() + this->player2->getWin_counter())) * 100) << "%\n";
+        cout << "Win rate = " << winRateP1 << "%\n";
         cout << "Cards won = " << this->player1->getWin_counter() << "\n";
-        cout << "Draw rate = " << (this->draws_count / (this->player1->getTurncounter())) * 100 << "%\n";
+        cout << "Draw rate = " << drawRateP1 << "%\n";
         cout << "Draws = " << this->draws_count << "\n";
 
         cout << this->player2->getName() << ": \n";
-        cout << "Win rate = " << this->player2->getWin_counter() /
-         (this->player1->getWin_counter() + this->player2->getWin_counter()) * 100 << "%\n";
+        cout << "Win rate = " << winRateP2 << "%\n";
         cout << "Cards won = " << this->player2->getWin_counter() << "\n";
-        cout << "Draw rate = " << (this->draws_count / this->player2->getTurncounter()) * 100 << "%\n";
+        cout << "Draw rate = " << drawRateP2 << "%\n";
         cout << "Draws = " << this->draws_count << "\n";
     }
 
